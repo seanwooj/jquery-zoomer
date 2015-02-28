@@ -400,6 +400,15 @@ $('iframe').zoomer({ width: 200, zoom: 0.5 });
             ;
 
             options.src = src;
+            
+            if (options.click) {
+                options.zoomerLink
+                    .attr('href', options.messageURL || options.src || '#')
+                    .unbind('click').bind('click', options.click)
+                ;
+            } else {
+                options.zoomerLink.attr('href', options.messageURL || options.src);
+            }
 
             $el[pluginName]('fadeOut').attr('src', src);
 
